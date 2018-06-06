@@ -1,6 +1,23 @@
 .container {
   display: flex;
-  padding-top: 52px;
+  padding-top: 12px;
+}
+.container1{
+  display:grid;
+}
+.container .nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF3A4E;
+  color: #fff;
+  height: 52px;
+  padding: 0 25px;
 }
 .container .left-col {
   width: 320px;
@@ -12,7 +29,7 @@
   border-right: 1px solid #f0f0f0;
 }
 .container .left-col > div {
-  margin: 40px 0;
+  margin: 20px 0;
 }
 @media all and (max-width: 768px) {
   .container .left-col {

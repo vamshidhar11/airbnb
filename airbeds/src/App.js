@@ -6,7 +6,7 @@ import  Header from "./components/header.js";
 class App extends React.Component{
     render(){
         return(
-            <div>
+            <div className="container1">
             <Header/>
             <Content/>
             </div>
