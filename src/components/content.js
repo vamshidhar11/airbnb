@@ -2,9 +2,12 @@ import React from 'react';
 import {
   ReactiveBase,
   NumberBox,
-  DateRange,
+  // DateRange,
   RangeSlider,
-  ResultCard
+  ResultCard,
+  DataSearch,
+  SingleDropdownList,
+  MultiDropdownList
 } from '@appbaseio/reactivesearch';
 
 class Content extends React.Component {
@@ -20,15 +23,6 @@ class Content extends React.Component {
           }}
         >
           <div className="left-col">
-            <DateRange
-              dataField="date_from"
-              componentId="DateRangeSensor"
-              title="When"
-              numberOfMonths={1}
-              queryFormat="basic_date"
-              initialMonth={new Date('04-01-2017')}
-            />
-
             <NumberBox
               componentId="GuestSensor"
               dataField="accommodates"
@@ -40,6 +34,18 @@ class Content extends React.Component {
                 end: 16
               }}
             />
+            <nav className="nav">
+              <div className="title">Airbeds</div>
+              <DataSearch
+                componentId="SearchSensor"
+                dataField={['name', 'price', 'location']}
+                autosuggest={true}
+                placeholder="Search by Price"
+                iconPosition="right"
+                className="search"
+                highlight={true}
+              />
+            </nav>
 
             <RangeSlider
               componentId="PriceSensor"
@@ -60,8 +66,28 @@ class Content extends React.Component {
               stepValue={10}
               interval={20}
               react={{
-                and: ['DateRangeSensor']
+                and: ['DateRangeSensor', 'GuestSensor', 'RoomType']
               }}
+            />
+            {/* <DateRange
+              dataField="date_from"
+              componentId="DateRangeSensor"
+              title="When"
+              numberOfMonths={1}
+              queryFormat="basic_date"
+              initialMonth={new Date('04-01-2017')}
+            /> */}
+
+            <SingleDropdownList
+              componentId="RoomType"
+              dataField="room_type"
+              title="Room-Type"
+            />
+
+            <MultiDropdownList
+              componentId="CitySensor"
+              dataField="location"
+              title="Cities"
             />
           </div>
 
@@ -85,7 +111,15 @@ class Content extends React.Component {
             })}
             pagination
             react={{
-              and: ['GuestSensor', 'PriceSensor', 'DateRangeSensor', 'search']
+              and: [
+                'GuestSensor',
+                'PriceSensor',
+                'DateRangeSensor',
+                'search',
+                'SearchSensor',
+                'RoomType',
+                'CitySensor'
+              ]
             }}
             innerClass={{
               resultStats: 'result-stats',

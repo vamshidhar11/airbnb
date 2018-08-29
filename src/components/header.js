@@ -6,7 +6,7 @@ export default class Header extends Component {
     return (
       <header className="header">
         <div className="logo-box">
-          <img alt="logo" src="../img/logo.png" class="logo" />
+          <img alt="Airbnb" src="../img/logo.png" class="logo" />
         </div>
         <div className="text-box">
           <h1 className="heading-primary">
